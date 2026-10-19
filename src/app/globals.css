@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* Configura o dark mode para responder estritamente à classe .dark (e não ao prefers-color-scheme do sistema) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f8f9fa;
+  --foreground: #18181b;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.011em;
+}
+
+/* Hero central — animate.css (onlineinsurance TESTNEW) */
+@keyframes hero-flip-in-x {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes hero-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.hero-slider-flip-in {
+  backface-visibility: visible;
+  animation: hero-flip-in-x 1s ease both;
+  animation-delay: 600ms;
+}
+
+.hero-slider-fade-out {
+  animation: hero-fade-out 0.35s ease forwards;
+}
